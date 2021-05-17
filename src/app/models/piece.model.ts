@@ -30,7 +30,6 @@ export class Piece implements IPiece {
     this.shape.forEach((row, y) => {
       row.forEach((value, x) => {
         if (value > 0) {
-          //   this.ctx.fillRect(this.x + x, this.y + y, 1, 1);
           this.ctx.strokeStyle = "#000000";
           this.ctx.lineWidth = 0.1;
           this.ctx.strokeRect(this.x + x, this.y + y, 1, 1);
@@ -46,6 +45,9 @@ export class Piece implements IPiece {
     this.shape.forEach((row, y) => {
       row.forEach((value, x) => {
         if (value > 0) {
+          ctxNext.strokeStyle = "#000000";
+          ctxNext.lineWidth = 0.1;
+          ctxNext.strokeRect(x, y, 1, 1);
           ctxNext.fillRect(x, y, 1, 1);
         }
       });
