@@ -2,3 +2,17 @@
 * {
   font-family: "Press Start 2P", cursive;
 }
+body {
+  background-color: #404040;
+}
+@font-face {
+  font-family: "Press Start 2P";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../src/assets/fonts/PressStart2P-Regular.ttf);
+}
+button {
+  border: none;
+  outline: none;
+}

@@ -1,13 +1,65 @@
-<div class="grid">
-  <canvas #board class="game-board"></canvas>
-  <div class="right-column">
-    <div>
-      <h1>TETRIS</h1>
-      <p>Score: {{ points }}</p>
-      <p>Lines: {{ lines }}</p>
-      <p>Level: {{ level }}</p>
-      <canvas #next class="next"></canvas>
+<div class="wrapper">
+  <div class="inner-wrapper">
+    <app-text [class]="'header'">TETRIS</app-text>
+    <div class="game-screen">
+      <canvas #board class="game-board"></canvas>
+      <div class="right-column">
+        <div class="game-info">
+          <app-text [class]="'sub-header'">HIGH</app-text>
+          <app-text [class]="'sub-header'">SCORE</app-text>
+          <app-text [class]="'sub-header'">1200</app-text> <br />
+          <app-text [class]="'sub-header'">Score</app-text>
+          <app-text [class]="'sub-header'">{{ points }}</app-text
+          ><br />
+          <app-text [class]="'sub-header'">LEVEL</app-text>
+          <app-text [class]="'sub-header'">{{ level }}</app-text>
+        </div>
+        <canvas #next class="next"></canvas>
+      </div>
     </div>
-    <button (click)="play()" class="play-button">Play</button>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-left">
+    <div class="btn-wrapper1">
+      <app-button [class]="'nav-btn'">
+        <div class="rect"></div>
+      </app-button>
+    </div>
+    <div class="btn-wrapper">
+      <app-button [class]="'nav-btn rotate-90'" (click)="left()">
+        <app-image [src]="'./assets/images/down.svg'"></app-image>
+      </app-button>
+      <app-button [class]="'nav-btn  rotate-270'" (click)="right()">
+        <app-image [src]="'./assets/images/down.svg'"></app-image>
+      </app-button>
+    </div>
+    <div class="btn-wrapper1">
+      <app-button [class]="'nav-btn'" (click)="down()">
+        <app-image [src]="'./assets/images/down.svg'"></app-image>
+      </app-button>
+    </div>
+  </div>
+
+  <div class="footer-right">
+    <div class="btn-wrapper1">
+      <app-button [class]="'nav-btn'" (click)="rotate()">
+        <app-text [class]="'small'">Rotate</app-text>
+      </app-button>
+    </div>
+    <div class="btn-wrapper">
+      <app-button [class]="'nav-btn'" (click)="start()">
+        <app-text [class]="'small'">Start</app-text>
+      </app-button>
+      <app-button [class]="'nav-btn'" (click)="end()">
+        <app-text [class]="'small'">End</app-text>
+      </app-button>
+    </div>
+    <div class="btn-wrapper1">
+      <app-button [class]="'nav-btn'" (click)="fastDown()">
+        <app-text [class]="'small'">Fast Down</app-text>
+      </app-button>
+    </div>
   </div>
 </div>

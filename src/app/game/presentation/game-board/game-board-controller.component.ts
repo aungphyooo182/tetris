@@ -63,6 +63,7 @@ export class GameBoardControllerComponent {
     if (event.keyCode === KEY.ESC) {
       this.gameOver();
     } else if (this.moves[event.keyCode]) {
+      // this means left, right, down, space, up
       event.preventDefault();
       // Get new state
       let p = this.moves[event.keyCode](this.piece);
@@ -224,5 +225,50 @@ export class GameBoardControllerComponent {
 
   getEmptyBoard(): number[][] {
     return Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+  }
+
+  left() {
+    let p = this.moves[KEY.LEFT](this.piece);
+    if (this.service.valid(p, this.board)) {
+      this.piece.move(p);
+    }
+  }
+
+  right() {
+    let p = this.moves[KEY.RIGHT](this.piece);
+    if (this.service.valid(p, this.board)) {
+      this.piece.move(p);
+    }
+  }
+
+  down() {
+    let p = this.moves[KEY.DOWN](this.piece);
+    if (this.service.valid(p, this.board)) {
+      this.piece.move(p);
+      this.points += POINTS.SOFT_DROP;
+    }
+  }
+
+  start() {
+    this.play();
+  }
+
+  end() {
+    this.gameOver();
+  }
+
+  rotate() {
+    let p = this.moves[KEY.UP](this.piece);
+    this.piece.move(p);
+  }
+
+  fastDown() {
+    let p = this.moves[KEY.SPACE](this.piece);
+    // Hard drop
+    while (this.service.valid(p, this.board)) {
+      this.points += POINTS.HARD_DROP;
+      this.piece.move(p);
+      p = this.moves[KEY.DOWN](this.piece);
+    }
   }
 }
