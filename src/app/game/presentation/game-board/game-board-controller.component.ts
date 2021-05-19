@@ -259,6 +259,9 @@ export class GameBoardControllerComponent {
 
   rotate() {
     let p = this.moves[KEY.UP](this.piece);
+    if (this.service.valid(p, this.board)) {
+      this.piece.move(p);
+    }
   }
 
   fastDown() {
